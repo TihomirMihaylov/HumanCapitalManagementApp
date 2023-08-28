@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanCapital", "HumanCapital.csproj", "{6E73F15D-E02F-4ED7-850B-C11C44A862FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HumanCapital", "HumanCapital.csproj", "{6E73F15D-E02F-4ED7-850B-C11C44A862FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{174BD5BC-8B82-4382-9680-D5C1821E0A97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "..\Sandbox\Sandbox.csproj", "{4F5447C7-0171-40B0-9F5B-3A3F51468DDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{6E73F15D-E02F-4ED7-850B-C11C44A862FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E73F15D-E02F-4ED7-850B-C11C44A862FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E73F15D-E02F-4ED7-850B-C11C44A862FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F5447C7-0171-40B0-9F5B-3A3F51468DDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F5447C7-0171-40B0-9F5B-3A3F51468DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F5447C7-0171-40B0-9F5B-3A3F51468DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F5447C7-0171-40B0-9F5B-3A3F51468DDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4F5447C7-0171-40B0-9F5B-3A3F51468DDA} = {174BD5BC-8B82-4382-9680-D5C1821E0A97}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54A6A568-5294-4E21-8973-6BEE32CB48F9}
