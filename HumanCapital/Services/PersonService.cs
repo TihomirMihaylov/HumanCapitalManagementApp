@@ -34,10 +34,7 @@ namespace HumanCapital.Services
             await _repository.AddAsync(model, cancellationToken);
             await _repository.SaveChangesAsync(cancellationToken);
 
-            //var allPeople = await _personRepository.AllAsNoTrackingAsync(cancellationToken);
-            //var newPerson = allPeople.OrderByDescending(x => x.Id).First();
-
-            return model; //check if this contains the newly assigned id
+            return model;
         }
 
         public async Task<Person> EditPersonAsync(Person request, CancellationToken cancellationToken)
