@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../../styles.css";
 
-const AddPersonModal = ({ isOpen, onClose, onSubmit }) => {
+const AddPersonModal = ({ isOpen, onClose, onEmployeeAdd }) => {
   console.log(isOpen);
   const [newEmployee, setNewEmployee] = useState({
     firstName: "",
@@ -18,11 +18,37 @@ const AddPersonModal = ({ isOpen, onClose, onSubmit }) => {
     }));
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    
+    try {
+      const response = await fetch('https://localhost:7182/addPerson', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newEmployee),
+      });
+
+      if (response.ok) {
+        const addedEmployee = await response.json();
+        onEmployeeAdd(addedEmployee);
+        alert('Success');
+        onClose(); // Close the modal on success
+      } else {
+        const errorData = await response.json();
+        alert(`Error: ${errorData.message}`);
+      }
+    } catch (error) {
+      alert(`Error: ${error.message}`);
+    }
+  };
+
   return (
     isOpen && (
       <div className="modal-content">
         <h3>Add New Person</h3>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit}>
           <label>
             First Name:
             <input

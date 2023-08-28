@@ -17,6 +17,10 @@ const EmployeeList = () => {
       .catch(error => console.error('Error fetching employee data:', error));
   }, []);
 
+  const handleEmployeeAdd = (addedEmployee) => {
+    setEmployeeData([...employeeData, addedEmployee]);
+  };
+
   return (
     <div>
       <h2>Employee List</h2>
@@ -25,7 +29,11 @@ const EmployeeList = () => {
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal-content">
-            <AddPersonModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            <AddPersonModal 
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              onEmployeeAdd={handleEmployeeAdd}
+            />
           </div>
         </div>
       )}
