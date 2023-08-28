@@ -8,7 +8,7 @@ namespace HumanCapital.Controllers.Validations
     {
         public EditPersonValidator()
         {
-            RuleFor(x => x.Id)
+            RuleFor(x => x.Id) // Doesn't work. TODO: investigate later
                 .GreaterThan(default(int))
                 .WithMessage("Id is invalid");
 
@@ -19,7 +19,7 @@ namespace HumanCapital.Controllers.Validations
                 .NotNullOrEmpty("LastName is empty");
 
             RuleFor(x => x.Salary)
-                .GreaterThan(default(decimal))
+                .GreaterThan(default(decimal)) // Doesn't work. TODO: investigate later
                 .WithMessage("Salary must be positive number");
 
             RuleFor(x => x.Department)

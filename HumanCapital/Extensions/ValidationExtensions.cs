@@ -9,7 +9,7 @@ namespace HumanCapital.Extensions
             return builder
                 .NotNull()
                 .WithMessage(errorMessage)
-                .NotEmpty()
+                .NotEmpty() // Doesn't work. TODO: investigate later
                 .WithMessage(errorMessage);
         }
     }
