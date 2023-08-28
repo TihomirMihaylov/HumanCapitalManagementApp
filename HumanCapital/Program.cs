@@ -44,7 +44,7 @@ namespace HumanCapital
             builder.Services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 
             // Application services
-            builder.Services.AddSingleton<IPersonService, PersonService>();
+            builder.Services.AddScoped<IPersonService, PersonService>();
 
 
             builder.Services.AddAuthentication()
