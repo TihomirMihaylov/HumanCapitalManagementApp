@@ -6,7 +6,6 @@ using System.Reflection;
 
 namespace HumanCapital.Data
 {
-    //: ApiAuthorizationDbContext<ApplicationUser>
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         private static readonly MethodInfo SetIsDeletedQueryFilterMethod =
@@ -15,9 +14,7 @@ namespace HumanCapital.Data
                 BindingFlags.NonPublic | BindingFlags.Static);
 
         public ApplicationDbContext(DbContextOptions options)
-            : base(options)
-        {
-        }
+            : base(options) { }
 
         public DbSet<Person> People { get; set; }
 

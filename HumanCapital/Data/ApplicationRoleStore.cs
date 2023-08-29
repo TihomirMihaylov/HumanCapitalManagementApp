@@ -13,12 +13,10 @@ namespace HumanCapital.Data
         IdentityRoleClaim<string>>
     {
         public ApplicationRoleStore(ApplicationDbContext context, IdentityErrorDescriber describer = null)
-            : base(context, describer)
-        {
-        }
+            : base(context, describer) { }
 
-        protected override IdentityRoleClaim<string> CreateRoleClaim(ApplicationRole role, Claim claim) =>
-            new IdentityRoleClaim<string>
+        protected override IdentityRoleClaim<string> CreateRoleClaim(ApplicationRole role, Claim claim) 
+            => new IdentityRoleClaim<string>
             {
                 RoleId = role.Id,
                 ClaimType = claim.Type,

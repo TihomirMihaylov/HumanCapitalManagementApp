@@ -15,8 +15,8 @@ namespace HumanCapital.Controllers.Validations
                 .NotNullOrEmpty("LastName is empty");
 
             RuleFor(x => x.Salary)
-                .GreaterThan(1) //This validation doesn't work! TODO: investigate further
-                //.Must(s => s > 0) //DOesn't work also
+                .GreaterThan(1) // Doesn't work. TODO: investigate later
+                 //.Must(s => s > 0) //Doesn't work either
                 .WithMessage("Salary must be positive number");
                 
 

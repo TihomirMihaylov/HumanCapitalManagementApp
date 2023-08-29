@@ -7,7 +7,7 @@ namespace HumanCapital.Controllers.Validations
     {
         public DeletePersonRequestValidator()
         {
-            RuleFor(x => x.PersonId)
+            RuleFor(x => x.PersonId) // Doesn't work. TODO: investigate later
                 .GreaterThan(default(int))
                 .WithMessage("PersonId is invalid");
         }
