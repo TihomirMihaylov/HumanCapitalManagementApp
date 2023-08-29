@@ -15,6 +15,8 @@ namespace HumanCapital.Controllers
         //TODO: restrict endpoint to logged in user with admin role
         public async Task<BaseResponse> Post(DeletePersonRequest request)
         {
+            TotalHttpRequestCounter.Inc();
+
             try
             {
                 await _personService.DeletePersonAsync(request.PersonId, Cts.Token);

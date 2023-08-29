@@ -15,6 +15,8 @@ namespace HumanCapital.Controllers
         //TODO: restrict endpoint to logged in user with admin role
         public async Task<BaseResponse> Post(Person request)
         {
+            TotalHttpRequestCounter.Inc();
+
             try
             {
                 var result = await _personService.EditPersonAsync(request, Cts.Token);

@@ -13,6 +13,10 @@ namespace HumanCapital.Controllers
 
         //TODO: restrict endpoint to logged in users
         public async Task<IEnumerable<Person>> Get()
-            => await _personService.GetAllPeopleAsync(Cts.Token);
+        {
+            TotalHttpRequestCounter.Inc();
+            
+            return await _personService.GetAllPeopleAsync(Cts.Token);
+        }
     }
 }
