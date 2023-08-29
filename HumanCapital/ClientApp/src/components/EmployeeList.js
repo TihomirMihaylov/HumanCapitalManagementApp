@@ -21,7 +21,6 @@ const EmployeeList = () => {
   };
 
   const handleEmployeeUpdate = (response) => {
-    console.log(response);
     const updatedData = employeeData.map(employee => {
       if (employee.id === response.person.id) {
         return {...employee, ...response.person };
