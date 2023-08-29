@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import AddPersonModal from "./Modals/AddPersonModal";
 import EditPersonModal from "./Modals/EditPersonModal";
+import DeletePersonModal from "./Modals/DeletePersonModal";
 import "../styles.css";
 
 const EmployeeList = () => {
   const [employeeData, setEmployeeData] = useState([]);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
 
   useEffect(() => {
@@ -21,20 +23,30 @@ const EmployeeList = () => {
   };
 
   const handleEmployeeUpdate = (response) => {
-    const updatedData = employeeData.map(employee => {
+    const updatedData = employeeData.map((employee) => {
       if (employee.id === response.person.id) {
-        return {...employee, ...response.person };
+        return { ...employee, ...response.person };
       }
 
       return employee;
     });
-  
+
+    setEmployeeData(updatedData);
+  };
+
+  const handleEmployeeDelete = () => {
+    const updatedData = employeeData.filter(employee => employee.id !== selectedEmployee.id);
     setEmployeeData(updatedData);
   };
 
   const openEditModal = (employee) => {
     setSelectedEmployee(employee);
-    setIsEditModalOpen(true)
+    setIsEditModalOpen(true);
+  };
+
+  const openDeleteModal = (employee) => {
+    setSelectedEmployee(employee);
+    setIsDeleteModalOpen(true);
   };
 
   return (
@@ -67,7 +79,7 @@ const EmployeeList = () => {
               <strong>Department:</strong> {employee.department}
               <div>
                 <button onClick={() => openEditModal(employee)}>Edit</button>
-                <button>Delete</button>
+                <button onClick={() => openDeleteModal(employee)}>Delete</button>
               </div>
               <hr />
             </li>
@@ -83,6 +95,19 @@ const EmployeeList = () => {
               onClose={() => setIsEditModalOpen(false)}
               employeeData={selectedEmployee}
               onEmployeeUpdate={handleEmployeeUpdate}
+            />
+          </div>
+        </div>
+      )}
+
+      {isDeleteModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <DeletePersonModal
+              isOpen={isDeleteModalOpen}
+              onClose={() => setIsDeleteModalOpen(false)}
+              employee={selectedEmployee}
+              onDelete={handleEmployeeDelete}
             />
           </div>
         </div>
